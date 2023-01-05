@@ -6,6 +6,7 @@ import com.wahidabd.core.common.Resource
 import com.wahidabd.core.common.SafeCall
 import com.wahidabd.core.data.source.remote.network.MovieService
 import com.wahidabd.core.data.source.remote.reponse.MovieListResponse
+import com.wahidabd.core.data.source.remote.reponse.MovieResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn

@@ -1,4 +1,4 @@
-package com.wahidabd.core.data.source
+package com.wahidabd.core.data
 
 import com.wahidabd.core.common.Resource
 import kotlinx.coroutines.flow.*
@@ -27,6 +27,8 @@ abstract class NetworkBoundResource<Response, Request> {
                     })
                 }
             }
+        }else{
+            emitAll(loadFromDB().map { Resource.Success(it) })
         }
     }
 
