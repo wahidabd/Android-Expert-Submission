@@ -1,6 +1,7 @@
 package com.wahidabd.core.data
 
 import com.wahidabd.core.common.Resource
+import com.wahidabd.core.data.NetworkBoundResource
 import com.wahidabd.core.data.source.local.LocalDataSource
 import com.wahidabd.core.data.source.remote.RemoteDataSource
 import com.wahidabd.core.data.source.remote.reponse.MovieListResponse
@@ -12,7 +13,6 @@ import com.wahidabd.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class MovieRepository @Inject constructor(
     private val remote: RemoteDataSource,
@@ -40,10 +40,33 @@ class MovieRepository @Inject constructor(
 
         }.asFlow()
 
+    override fun getDetail(id: Int): Flow<Resource<MovieModel>> =
+        object : NetworkBoundResource<MovieModel, MovieResponse>() {
+            override fun loadFromDB(): Flow<MovieModel> =
+                local.getMovie(id).map { data ->
+                    DataMapper.mapEntityToDomain(data)
+                }
+
+            override fun shouldFetch(data: MovieModel?): Boolean =
+                data == null
+
+            override suspend fun createCall(): Flow<Resource<MovieResponse>> =
+                remote.getDetail(id)
+
+            override suspend fun saveCallResult(data: MovieResponse) {
+                val movie = DataMapper.mapResponseToEntity(data)
+                local.insertDetail(movie)
+            }
+
+        }.asFlow()
+
     override fun getFavorites(): Flow<List<MovieModel>> =
         local.getFavorites().map {
             DataMapper.mapEntitiesToDomain(it)
         }
+
+    override fun checkFavorite(id: Int): Flow<MovieModel> =
+        local.checkFavorite(id)
 
     override fun setFavorite(movie: MovieModel, newState: Boolean) {
         val movieEntity = DataMapper.mapDomainToEntity(movie)

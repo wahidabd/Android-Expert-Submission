@@ -44,6 +44,7 @@
         app:itemIconTint="@color/colorPrimaryDark"
         app:itemTextColor="@color/colorPrimaryDark"
         app:menu="@menu/menu"
+        app:labelVisibilityMode="selected"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

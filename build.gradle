@@ -18,10 +18,8 @@ buildscript {
         activity = '1.6.1'
         fragment = '1.5.5'
         circle_image = '3.1.0'
-        glide = '4.14.2'
-        glide_integration = '4.11.0'
-        lottie = '5.2.0'
         timber = '5.0.1'
+        coil = '2.2.2'
     }
     repositories {
         google()

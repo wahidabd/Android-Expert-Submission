@@ -43,6 +43,34 @@ object DataMapper {
         }
     }
 
+    fun mapResponseToEntity(data: MovieResponse): MovieEntity =
+        MovieEntity(
+            id = data.id,
+            title = data.title,
+            overview = data.overview,
+            poster_path = data.poster_path,
+            backdrop_path = data.backdrop_path,
+            release_date = data.release_date,
+            vote_count = data.vote_count,
+            vote_average = data.vote_average,
+            original_language = data.original_language,
+            is_favorite = false
+        )
+
+    fun mapEntityToDomain(data: MovieEntity): MovieModel =
+        MovieModel(
+            id = data.id,
+            title = data.title.toString(),
+            overview = data.overview.toString(),
+            poster_path = data.poster_path.toString(),
+            backdrop_path = data.backdrop_path.toString(),
+            release_date = data.release_date.toString(),
+            vote_average = data.vote_average,
+            vote_count = data.vote_count,
+            original_language = data.original_language.toString(),
+            is_favorite = data.is_favorite
+        )
+
     fun mapDomainToEntity(data: MovieModel) =
         MovieEntity(
             id = data.id,

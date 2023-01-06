@@ -11,8 +11,14 @@ class MovieInteractor @Inject constructor(private val repository: IMovieReposito
     override fun getMovies(): Flow<Resource<List<MovieModel>>> =
         repository.getMovies()
 
+    override fun getDetail(id: Int): Flow<Resource<MovieModel>> =
+        repository.getDetail(id)
+
     override fun getFavorites(): Flow<List<MovieModel>> =
         repository.getFavorites()
+
+    override fun checkFavorite(id: Int): Flow<MovieModel> =
+        repository.checkFavorite(id)
 
     override fun setFavorite(movie: MovieModel, newState: Boolean) {
         repository.setFavorite(movie, newState)

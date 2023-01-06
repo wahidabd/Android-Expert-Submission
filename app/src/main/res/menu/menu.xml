@@ -9,17 +9,13 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/tvFragment"
-        android:title="@string/tv_show"
-        android:icon="@drawable/ic_tv"
-        app:showAsAction="ifRoom"/>
-
-    <item
+        android:id="@+id/favoriteFragment"
         android:title="@string/favorite"
         android:icon="@drawable/ic_un_favorite"
         app:showAsAction="ifRoom"/>
 
     <item
+        android:id="@+id/settingFragment"
         android:title="@string/settings"
         android:icon="@drawable/ic_setting"
         app:showAsAction="ifRoom"/>
