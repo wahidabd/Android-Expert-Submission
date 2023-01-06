@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/movie"
+        android:icon="@drawable/ic_movie"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/favoriteFragment"
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_un_favorite"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/settingFragment"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_setting"
+        app:showAsAction="ifRoom"/>
+
+</menu>
