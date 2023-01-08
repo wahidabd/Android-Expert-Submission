@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wahidabd.core.ui.MovieAdapter
@@ -44,11 +45,18 @@ class FavoriteFragment : Fragment() {
             itemAnimator = DefaultItemAnimator()
         }
 
+        mAdapter.setOnItemClick {
+            findNavController().navigate(
+                FavoriteFragmentDirections.actionFavoriteFragmentToDetailFragment(it)
+            )
+        }
+
         viewModel.favorites().observe(viewLifecycleOwner) { res ->
             if (res.isNotEmpty()){
                 mAdapter.setData = res
+                binding.linearEmpty.visibility = View.GONE
             }else{
-                showToast("Favorite is empty")
+                binding.linearEmpty.visibility = View.VISIBLE
             }
         }
 

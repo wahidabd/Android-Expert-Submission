@@ -10,4 +10,9 @@
     <string name="image_preview">Image Preview</string>
     <string name="image_preview_darker">Image Preview Darker</string>
     <string name="description">Description</string>
+    <string name="abd_wahid">Abd. Wahid</string>
+    <string name="select_language">Pilih Bahasa</string>
+    <string name="about_us">Tentang Kami</string>
+    <string name="privacy_policy">Syarat dan Ketentuan</string>
+    <string name="share">Bagikan</string>
 </resources>

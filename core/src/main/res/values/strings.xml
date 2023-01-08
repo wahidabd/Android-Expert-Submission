@@ -9,4 +9,5 @@
     <string name="settings">Settings</string>
     <string name="image_preview">Image Preview</string>
     <string name="image_preview_darker">Image Preview Darker</string>
+    <string name="data_not_found">Data not found</string>
 </resources>
