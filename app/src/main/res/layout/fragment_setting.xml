@@ -1,14 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:background="@color/colorPrimary"
     tools:context=".setting.SettingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_gravity="center"
+        tools:src="@color/colorPrimaryDark"
+        android:layout_marginTop="46dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/abd_wahid"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"/>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/select_language"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="14dp"
+        app:drawableEndCompat="@drawable/ic_right"
+        app:drawableTint="@color/white" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/privacy_policy"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        app:drawableEndCompat="@drawable/ic_right"
+        app:drawableTint="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/share"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        app:drawableEndCompat="@drawable/ic_right"
+        app:drawableTint="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/about_us"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        app:drawableEndCompat="@drawable/ic_right"
+        app:drawableTint="@color/white" />
+
+</LinearLayout>

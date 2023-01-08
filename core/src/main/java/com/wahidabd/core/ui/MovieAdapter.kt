@@ -6,23 +6,23 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wahidabd.core.databinding.ItemMovieBinding
-import com.wahidabd.core.domain.model.MovieModel
+import com.wahidabd.core.domain.model.Movie
 import com.wahidabd.core.utils.Constant.IMAGE_URL
 import com.wahidabd.core.utils.loadImageUrl
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
-    private val differCallback = object : DiffUtil.ItemCallback<MovieModel>() {
-        override fun areItemsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean =
+    private val differCallback = object : DiffUtil.ItemCallback<Movie>() {
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
             oldItem == newItem
 
-        override fun areContentsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean =
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
             oldItem == newItem
 
     }
 
     private val listDiffer = AsyncListDiffer(this, differCallback)
-    var setData: List<MovieModel>
+    var setData: List<Movie>
         get() = listDiffer.currentList
         set(value) = listDiffer.submitList(value)
 
@@ -44,7 +44,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(data: MovieModel, listener: ((Int) -> Unit)?){
+            fun bind(data: Movie, listener: ((Int) -> Unit)?){
                 binding.tvTitle.text = data.title
                 binding.imgPhoto.loadImageUrl( IMAGE_URL + data.poster_path)
 

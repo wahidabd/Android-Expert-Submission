@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.wahidabd.core.common.Resource
-import com.wahidabd.core.domain.model.MovieModel
+import com.wahidabd.core.domain.model.Movie
 import com.wahidabd.core.utils.Constant
 import com.wahidabd.core.utils.setProgress
 import com.wahidabd.core.utils.showToast
@@ -19,6 +19,7 @@ import com.wahidabd.movieapp.MainViewModel
 import com.wahidabd.movieapp.R
 import com.wahidabd.movieapp.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
@@ -30,7 +31,7 @@ class DetailFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
 
     private var status: Boolean = false
-    private lateinit var movie: MovieModel
+    private lateinit var movie: Movie
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,7 +70,7 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setView(data: MovieModel) {
+    private fun setView(data: Movie) {
         with(binding) {
             tvTitle.text = data.title
             tvRealaseDate.text = data.release_date

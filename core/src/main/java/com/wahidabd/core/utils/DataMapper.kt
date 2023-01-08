@@ -2,7 +2,7 @@ package com.wahidabd.core.utils
 
 import com.wahidabd.core.data.source.local.entity.MovieEntity
 import com.wahidabd.core.data.source.remote.reponse.MovieResponse
-import com.wahidabd.core.domain.model.MovieModel
+import com.wahidabd.core.domain.model.Movie
 
 object DataMapper {
 
@@ -26,9 +26,9 @@ object DataMapper {
         return movies
     }
 
-    fun mapEntitiesToDomain(data: List<MovieEntity>): List<MovieModel> {
+    fun mapEntitiesToDomain(data: List<MovieEntity>): List<Movie> {
         return data.map { entity ->
-            MovieModel(
+            Movie(
                 id = entity.id,
                 title = entity.title.toString(),
                 overview = entity.overview.toString(),
@@ -57,8 +57,8 @@ object DataMapper {
             is_favorite = false
         )
 
-    fun mapEntityToDomain(data: MovieEntity): MovieModel =
-        MovieModel(
+    fun mapEntityToDomain(data: MovieEntity): Movie =
+        Movie(
             id = data.id,
             title = data.title.toString(),
             overview = data.overview.toString(),
@@ -71,7 +71,7 @@ object DataMapper {
             is_favorite = data.is_favorite
         )
 
-    fun mapDomainToEntity(data: MovieModel) =
+    fun mapDomainToEntity(data: Movie) =
         MovieEntity(
             id = data.id,
             title = data.title,
@@ -82,7 +82,7 @@ object DataMapper {
             vote_average = data.vote_average,
             vote_count = data.vote_count,
             original_language = data.original_language,
-            is_favorite = data.is_favorite
+            is_favorite = data.is_favorite ?: false
         )
 
 }
