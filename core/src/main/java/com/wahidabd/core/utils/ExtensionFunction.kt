@@ -1,5 +1,6 @@
 package com.wahidabd.core.utils
 
+import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -14,8 +15,8 @@ fun ImageView.loadImageUrl(url: String) =
         transitionFactory(CrossfadeTransition.Factory())
     }
 
-fun Fragment.showToast(msg: String) =
-    Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+fun showToast(context: Context, msg: String) =
+    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
 
 fun ProgressBar.setProgress(state: Boolean) =
     if (state) this.visibility = View.VISIBLE

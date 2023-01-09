@@ -1,8 +1,5 @@
 package com.wahidabd.core.domain.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
 data class Movie(
     val backdrop_path: String,
     val id: Int,

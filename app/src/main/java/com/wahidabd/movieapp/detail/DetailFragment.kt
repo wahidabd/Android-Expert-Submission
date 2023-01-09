@@ -25,7 +25,7 @@ import timber.log.Timber
 class DetailFragment : Fragment() {
 
     private var _binding: FragmentDetailBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
 
     private val args: DetailFragmentArgs by navArgs()
     private val viewModel: MainViewModel by viewModels()
@@ -36,32 +36,32 @@ class DetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         checkFavorite()
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.imgBack.setOnClickListener {
+        binding?.imgBack?.setOnClickListener {
             findNavController().navigateUp()
         }
 
-        binding.imgFavorite.setOnClickListener { setFavorite() }
+        binding?.imgFavorite?.setOnClickListener { setFavorite() }
 
         viewModel.getDetail(args.id).observe(viewLifecycleOwner) { res ->
             when (res) {
                 is Resource.Loading -> {
-                    binding.progress.setProgress(true)
+                    binding?.progress?.setProgress(true)
                 }
                 is Resource.Error -> {
-                    binding.progress.setProgress(false)
-                    showToast(res.error)
+                    binding?.progress?.setProgress(false)
+                    showToast(requireContext(), res.error)
                 }
                 is Resource.Success -> {
-                    binding.progress.setProgress(false)
+                    binding?.progress?.setProgress(false)
                     movie = res.data
                     setView(res.data)
                 }
@@ -71,7 +71,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun setView(data: Movie) {
-        with(binding) {
+        binding?.apply {
             tvTitle.text = data.title
             tvRealaseDate.text = data.release_date
             tvDesc.text = data.overview
@@ -85,11 +85,11 @@ class DetailFragment : Fragment() {
         viewModel.checkFavorite(args.id).observe(viewLifecycleOwner) { res ->
             status = res != null
             if (status) {
-                binding.imgFavorite.setImageDrawable(
+                binding?.imgFavorite?.setImageDrawable(
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_favorite)
                 )
             } else {
-                binding.imgFavorite.setImageDrawable(
+                binding?.imgFavorite?.setImageDrawable(
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_un_favorite)
                 )
             }
@@ -99,6 +99,11 @@ class DetailFragment : Fragment() {
     private fun setFavorite() {
         viewModel.setFavorite(movie, !status)
         checkFavorite()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

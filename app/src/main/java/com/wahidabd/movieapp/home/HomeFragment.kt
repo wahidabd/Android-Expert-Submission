@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -30,16 +30,16 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         mAdapter = MovieAdapter()
-        binding.rvMovie.apply {
+        binding?.rvMovie?.apply {
             adapter = mAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
             itemAnimator = DefaultItemAnimator()
@@ -58,18 +58,23 @@ class HomeFragment : Fragment() {
         viewModel.getMovies().observe(viewLifecycleOwner){ res ->
             when(res){
                 is Resource.Loading -> {
-                    binding.progressCircular.setProgress(true)
+                    binding?.progressCircular?.setProgress(true)
                 }
                 is Resource.Error -> {
-                    binding.progressCircular.setProgress(false)
-                    showToast(res.error)
+                    binding?.progressCircular?.setProgress(false)
+                    showToast(requireContext(), res.error)
                 }
                 is Resource.Success -> {
-                    binding.progressCircular.setProgress(false)
+                    binding?.progressCircular?.setProgress(false)
                     mAdapter.setData = res.data
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

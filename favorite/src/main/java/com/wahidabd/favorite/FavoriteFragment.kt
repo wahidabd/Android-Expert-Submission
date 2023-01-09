@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wahidabd.core.ui.MovieAdapter
-import com.wahidabd.core.utils.showToast
 import com.wahidabd.favorite.databinding.FragmentFavoriteBinding
 import com.wahidabd.favorite.di.ViewModelFactory
 import com.wahidabd.favorite.di.inject
@@ -65,6 +64,11 @@ class FavoriteFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         inject()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
