@@ -17,9 +17,6 @@ abstract class MovieDatabase : RoomDatabase() {
         @Volatile
         private var instance: MovieDatabase? = null
 
-        private val passphrase = SQLiteDatabase.getBytes("wahidabd-sql-chiper".toCharArray())
-        private val factory = SupportFactory(passphrase)
-
         fun getDatabase(context: Context): MovieDatabase =
             instance ?: synchronized(this){
                 instance ?: buildDatabase(context).also {
@@ -27,11 +24,15 @@ abstract class MovieDatabase : RoomDatabase() {
                 }
             }
 
-        private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context, MovieDatabase::class.java, "movie.db")
+        private fun buildDatabase(context: Context): MovieDatabase {
+            val passphrase = SQLiteDatabase.getBytes("wahidabd".toCharArray())
+            val factory = SupportFactory(passphrase)
+
+            return Room.databaseBuilder(context, MovieDatabase::class.java, "movie.db")
                 .fallbackToDestructiveMigration()
                 .openHelperFactory(factory)
-                .allowMainThreadQueries()
                 .build()
+        }
+
     }
 }
