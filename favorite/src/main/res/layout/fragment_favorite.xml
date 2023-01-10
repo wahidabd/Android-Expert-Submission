@@ -7,30 +7,18 @@
     tools:background="@color/colorPrimary"
     tools:context=".FavoriteFragment">
 
-    <LinearLayout
-        android:id="@+id/linear_empty"
+
+    <TextView
+        android:id="@+id/tv_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/data_not_found"
+        android:textColor="@color/white"
+        android:textSize="16sp"
         android:gravity="center"
-        android:visibility="gone"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true" />
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_folder_off"
-            app:tint="@color/white"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/data_not_found"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="16sp"
-            android:textColor="@color/white"/>
-
-    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_movie"

@@ -53,9 +53,9 @@ class FavoriteFragment : Fragment() {
         viewModel.favorites().observe(viewLifecycleOwner) { res ->
             if (res.isNotEmpty()){
                 mAdapter.setData = res
-                binding.linearEmpty.visibility = View.GONE
+                binding.tvEmpty.visibility = View.GONE
             }else{
-                binding.linearEmpty.visibility = View.VISIBLE
+                binding.tvEmpty.visibility = View.VISIBLE
             }
         }
 

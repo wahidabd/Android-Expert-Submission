@@ -19,7 +19,6 @@ import com.wahidabd.movieapp.MainViewModel
 import com.wahidabd.movieapp.R
 import com.wahidabd.movieapp.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
@@ -73,7 +72,7 @@ class DetailFragment : Fragment() {
     private fun setView(data: Movie) {
         binding?.apply {
             tvTitle.text = data.title
-            tvRealaseDate.text = data.release_date
+            tvReleaseDate.text = data.release_date
             tvDesc.text = data.overview
 
             imgItemPhoto.load(Constant.IMAGE_URL + data.poster_path)

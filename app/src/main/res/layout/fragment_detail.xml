@@ -29,7 +29,6 @@
         tools:src="@color/colorAccent" />
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:contentDescription="@string/image_preview_darker"
@@ -104,7 +103,7 @@
         tools:text="Name" />
 
     <TextView
-        android:id="@+id/tv_realase_date"
+        android:id="@+id/tv_release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
